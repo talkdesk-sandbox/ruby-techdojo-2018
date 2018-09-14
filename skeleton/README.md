@@ -37,6 +37,11 @@ And you're set. Click "Manage Numbers" and you'll see your brand new phone numbe
 
 For now we're done with Twilio. We'll get back here later to hook your web application to the number you just bought.
 
+## Setup ngrok tunnel
+To create a tunnel to localhost on port 9292, we'll just need to run:
+```bash
+ngrok http 9292
+```
 
 ## Setup webhook in Twilio
 - In your twilio account, access the list of "Phone Numbers".
@@ -44,9 +49,3 @@ For now we're done with Twilio. We'll get back here later to hook your web appli
 - In the "Voice & Fax" section configure the "A call comes in" Webhook to point to your local application (through the ngrok tunnel). The endpoint must be set as `https://<ngrok_url>/inbound_call` where *ngrok_url* should be replaced by the Url that was [assigned by ngrok](#setup-ngrok-tunnel).
       Example: https://44a1dcb5.ngrok.io/inbound_call
 - Save the settings and make a test call.
-
-## Setup ngrok tunnel
-To create a tunnel to localhost on port 9292, we'll just need to run:
-```bash
-ngrok http 9292
-```
