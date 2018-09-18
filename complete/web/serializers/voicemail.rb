@@ -7,7 +7,7 @@ module MariaCallCenter
       def serialize(voicemail:)
         ::Twilio::TwiML::VoiceResponse.new do |r|
           r.say(message: voicemail.message) if voicemail.message
-          r.record(timeout: voicemail.timeout, playBeep: voicemail.beep)
+          r.record(action: 'hangup_call', method: 'POST', timeout: voicemail.timeout, playBeep: voicemail.beep)
           r.hangup
         end
       end

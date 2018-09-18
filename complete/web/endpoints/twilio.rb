@@ -5,6 +5,7 @@ require 'serializers/input'
 require 'serializers/goto'
 require 'serializers/voicemail'
 require 'serializers/dial'
+require 'serializers/hangup'
 
 module MariaCallCenter
   module Endpoints
@@ -141,6 +142,16 @@ module MariaCallCenter
           serializer.serialize(dial: dial)
         end
       end
+      resource :hangup_call do
+        post do
+          status 200
+
+          hangup_call = System[:hangup_call].call
+          MariaCallCenter::Serializers::Hangup.new.serialize(hangup_call: hangup_call)
+          
+        end
+      end
+      
     end
   end
 end
