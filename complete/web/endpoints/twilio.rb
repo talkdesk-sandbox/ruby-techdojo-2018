@@ -129,7 +129,7 @@ module MariaCallCenter
           status 200
 
           serializer = MariaCallCenter::Serializers::Voicemail.new
-          serializer.serialize(voicemail: voicemail)
+          serializer.serialize(voicemail: voicemail, next_step: :hangup_call)
         end
       end
 
