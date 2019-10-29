@@ -2,8 +2,6 @@
 require 'maria_call_center'
 
 require 'grape'
-require 'grape-swagger'
-require 'oat-swagger'
 require 'grape/route_helpers'
 
 require 'endpoints/twilio'
@@ -31,12 +29,5 @@ module MariaCallCenter
     # mount endpoints here
 
     mount Endpoints::Twilio
-
-    ###
-
-    add_swagger_documentation(
-      hide_documentation_path: true,
-      models: OatSwagger::Serializer.swagger_models,
-    )
   end
 end
